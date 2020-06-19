@@ -6,6 +6,7 @@ import { Member } from 'src/app/Models/member';
 import { Router } from '@angular/router';
 import { TrainersComponent } from '../../trainers/trainers/trainers.component';
 import { TrainerFeedbackComponent } from '../trainer-feedback/trainer-feedback.component';
+import { MemberPaymentComponent } from '../member-payment/member-payment.component';
 
 @Component({
   selector: 'app-member',
@@ -27,5 +28,10 @@ export class MemberComponent implements OnInit {
   giveFeedback(){
     const modalFeedbackRef = this.modalService.open(TrainerFeedbackComponent);
     this.member$.subscribe(x => modalFeedbackRef.componentInstance.member = x);
+  }
+  viewPackage(){
+    const modalPaymentRef = this.modalService.open(MemberPaymentComponent);
+    this.member$.subscribe(x => modalPaymentRef.componentInstance.loggedInMember = x);
+    console.log(modalPaymentRef.componentInstance)
   }
 }

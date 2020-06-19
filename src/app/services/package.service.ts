@@ -36,7 +36,13 @@ deletePackage(packageId: number): Observable<Package> {
     catchError(this.errorHandler)
   );
 }
-
+getPackage(Id: number): Observable<Package> {
+  debugger
+  return this.http.get<Package>('https://localhost:44392/package/'  + Id)
+  .pipe(
+    catchError(this.errorHandler)
+  );
+}
 updatePackage( packageId: number, updatedPackage): Observable<Package> {
   return this.http.put<Package>('https://localhost:44392/package/' + packageId, JSON.stringify(updatedPackage), this.httpOptions)
   .pipe(
@@ -53,6 +59,7 @@ updatePackage( packageId: number, updatedPackage): Observable<Package> {
           errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
         }
         console.log(errorMessage);
+        console.log(error.message);
         return throwError(errorMessage);
       }
 }

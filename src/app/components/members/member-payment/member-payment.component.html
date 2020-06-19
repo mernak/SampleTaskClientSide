@@ -1,0 +1,47 @@
+<!--
+<div class="modal-header">
+    <h4 class="modal-title"> Package and payment detail </h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form
+ [formGroup]="form"  
+ >
+ <div class="col-md-6">
+     <ul>
+     <div class="form-group required">
+         <label for="name">Name</label>
+         <input type="text" name="name" id="name" formControlName="name">
+         <div class="text-danger" *ngIf="form.get('name').hasError('pattern')"> 
+         Name has invalid characters
+         </div>
+     </div>
+     <div class="form-group required">
+        <label for="subscriptionDuration">Subscription duration</label>
+        <input type="number" name="subscriptionDuration" id="subscriptionDuration" formControlName="subscriptionDuration">
+        <div class="text-danger" *ngIf="form.get('subscriptionDuration').errors"> 
+            This is a required field
+        </div>
+    </div>
+     <div>
+        <label for="freePtsessions">Number of PT sessions</label>
+        <input type="number" name="freePtsessions" id="freePtsessions" formControlName="freePtsessions">
+    </div>
+    <div class="form-group required">
+        <label for="cost">Cost</label>
+        <input type="number" name="cost" id="cost" formControlName="cost">
+    </div>
+    <div class="form-group">
+        <label for="discount">Discount</label>
+        <input type="number" name="discount" id="discount" formControlName="discount">
+    </div>  
+</ul>
+</div>
+ <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  </div>
+</form>
+</div>
+-->

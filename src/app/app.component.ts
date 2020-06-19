@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { User } from './Models/user';
 import { AuthenticationService } from './services/authentication.service';
 import { Role } from './Models/role';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,22 +10,29 @@ import { Role } from './Models/role';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  user: User;
-  constructor(private authenticationService: AuthenticationService) {
-    this.authenticationService.user.subscribe(x => this.user = x);
-}
+  currentUser: User;
+
+  constructor(
+      private router: Router,
+      private authenticationService: AuthenticationService
+  ) {
+      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
+
 
 get isUser(){
+  console.log(this.authenticationService.loggedIn);
   return this.authenticationService.loggedIn;
 }
 get isAdmin() {
-  return this.user && this.user.role === Role.Admin;
+  return this.currentUser && this.currentUser.role === Role.Admin;
 }
 get isTrainer() {
-  return true; // this.user && this.user.role === Role.Trainer;
+  console.log(this.currentUser);
+  return  this.currentUser && this.currentUser.role === Role.Trainer;
 }
 get isMember() {
-  return true; // this.user && this.user.role === Role.Member;
+  return this.currentUser && this.currentUser.role === Role.Member;
 }
 
   logout() {

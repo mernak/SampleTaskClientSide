@@ -10,39 +10,37 @@ import { User } from '../Models/user';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private userSubject: BehaviorSubject<User>;
-  public user: Observable<User>;
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
   public loggedIn;
 
-  constructor( private router: Router, private http: HttpClient) {
-    this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
-    this.user = this.userSubject.asObservable();
-   }
 
-   public get userValue(): User {
-    return this.userSubject.value;
+  constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
 }
 
-login(userLog): Observable<User> {
-      this.loggedIn = true;
-    return this.http.post<User>('https://localhost:44392/auth/authenticate', JSON.stringify(userLog))
-        .pipe(map(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('user', JSON.stringify(user));
-          //  this.user = user;
-          //  this.userSubject.next(user);
-            return user;
-        }),
-        catchError(this.errorHandler));
+public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+}
+
+login(username, password) {
+  this.loggedIn = true;
+  return this.http.post<any>('https://localhost:44392/auth/authenticate', { username, password })
+      .pipe(map(user => {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUserSubject.next(user);
+          return user;
+      }));
 }
 
 logout() {
   this.loggedIn = false;
-    // remove user from local storage to log user out
-    localStorage.removeItem('user');
-    this.userSubject.next(null);
-    this.router.navigate(['user/login']);
-         }
+  // remove user from local storage and set current user to null
+  localStorage.removeItem('currentUser');
+  this.currentUserSubject.next(null);
+}
 
          errorHandler(error) {
           let errorMessage = '';

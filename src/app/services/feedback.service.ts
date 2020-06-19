@@ -19,7 +19,6 @@ getfeedbacks(): Observable<Feedback[]>{
   return this.http.get<Feedback[]>('https://localhost:44392/feedback');
 }
 createFeedback(feedback): Observable<Feedback> {
-  debugger;
   return this.http.post<Feedback>('https://localhost:44392/feedback/', JSON.stringify(feedback), this.httpOptions);
 }
 }

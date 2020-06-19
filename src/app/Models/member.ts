@@ -14,4 +14,5 @@ export class Member implements User {
     token: string;
     package: Package;
     trainer: Trainer;
+    packageId: number;
 }

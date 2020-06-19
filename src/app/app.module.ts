@@ -22,6 +22,7 @@ import { TrainerComponent } from './components/trainers/trainer/trainer.componen
 import { MemberComponent } from './components/members/member/member.component';
 import { TrainersComponent } from './components/trainers/trainers/trainers.component';
 import { TrainerFeedbackComponent } from './components/members/trainer-feedback/trainer-feedback.component';
+import { MemberPaymentComponent } from './components/members/member-payment/member-payment.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TrainerFeedbackComponent } from './components/members/trainer-feedback/
     TrainerComponent,
     MemberComponent,
     TrainersComponent,
-    TrainerFeedbackComponent
+    TrainerFeedbackComponent,
+    MemberPaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ import { TrainerFeedbackComponent } from './components/members/trainer-feedback/
     MemberFormComponent,
     TrainerFormComponent,
     TrainersComponent,
-    TrainerFeedbackComponent
+    TrainerFeedbackComponent,
+    MemberPaymentComponent
   ]
 })
 export class AppModule { }
