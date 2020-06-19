@@ -1,6 +1,7 @@
 import { User } from './user';
 import { Package } from './package';
 import { Role } from './role';
+import { Trainer } from './trainer';
 
 export class Member implements User {
     id: number;
@@ -12,4 +13,5 @@ export class Member implements User {
     Age: number;
     token: string;
     package: Package;
+    trainer: Trainer;
 }
