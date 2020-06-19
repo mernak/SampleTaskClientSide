@@ -24,13 +24,13 @@ export class TrainerFeedbackComponent implements OnInit {
     console.log(this.member);
     const newFeedback: Feedback = {
             id : 0,
-            memberId : this.member.memberId,
+            memberId : this.member.id,
             trainerId : this.member.trainerId,
             date : new Date('2019-01-16')  ,
             rating : this.currentRate,
             review : this.feedback.value
     }
-    this.feedbackService.createFeedback(newFeedback);
+    this.feedbackService.createFeedback(newFeedback).subscribe();
     console.log(newFeedback)
     console.log(this.currentRate);
     console.log(this.feedback.value);
