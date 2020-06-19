@@ -1,0 +1,16 @@
+  <section>
+      <div class="card text-white bg-secondary mb-3" style="max-width: 30rem; margin-right: 25px; " *ngIf="(trainer$ | async) as trainer;">
+          <div class="card-body">
+              <ul class="card-body">
+                  <div class="card-text"><strong>UserName:</strong> {{trainer.username}}</div>
+                  <div class="card-text"><strong>First Name:</strong> {{trainer.firstName}}</div>
+                  <div class="card-text"><strong>Last Name:</strong> {{trainer.lastName}}</div>
+                  <div class="card-text"><strong>Salary:</strong> {{trainer.salary}}</div>
+              </ul>
+              <div class="card-body">
+                <button type="button" (click)="onUpdate(trainer)" style="margin-left: 12px;" class="btn btn-info btn-sm">Set Profile</button>
+              </div>
+          </div>
+      </div>
+  </section>
+

@@ -1,0 +1,16 @@
+<section>
+    <div class="card text-white bg-secondary mb-3" style="max-width: 30rem; margin-right: 25px; " *ngIf="(member$ | async) as member;">
+        <div class="card-body">
+            <ul class="card-body">
+                <div class="card-text"><strong>UserName:</strong> {{member.username}}</div>
+                <div class="card-text"><strong>First Name:</strong> {{member.firstName}}</div>
+                <div class="card-text"><strong>Last Name:</strong> {{member.lastName}}</div>
+                <div class="card-text"><strong>Age:</strong> {{member.Age}}</div>
+            </ul>
+            <div class="card-body">
+              <button type="button" (click)="viewTrainers()" style="margin-left: 12px;" class="btn btn-info btn-sm">View List of trainers</button>
+            </div>
+        </div>
+    </div>
+</section>
+

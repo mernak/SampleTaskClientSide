@@ -1,0 +1,21 @@
+<header>
+  <button class="btn btn-outline-primary" (click)="open()">Add new package</button>
+</header>
+<br>
+<section>
+    <div class="card text-white bg-secondary mb-3" style="max-width: 15rem; margin-right: 25px; " *ngFor="let package of (packageList$ | async)">
+        <div class="card-body">
+            <h2 class="card-header">{{package.name}}</h2>
+            <ul class="card-body">
+                <div class="card-text"><strong>Duration:</strong> {{package.subscriptionDuration}} months</div>
+                <div class="card-text">{{package.freePtsessions}} free personal trainer sessions</div>
+                <div class="card-text">cost: {{package.cost}} LE</div>
+                <div class="card-text">discount: {{package.discount}}</div>
+            </ul>
+            <div class="card-body">
+              <button type="button" (click)="onDeletePackage(package)" style="margin-right: 12px;" class="btn btn-danger btn-sm">Remove</button>
+              <button type="button" (click)="onUpdatePackage(package)" style="margin-left: 12px;" class="btn btn-info btn-sm">Modify</button>
+            </div>
+        </div>
+    </div>
+</section>

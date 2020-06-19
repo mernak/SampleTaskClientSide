@@ -1,0 +1,38 @@
+<header>
+  <button class="btn btn-outline-primary" (click)="open()">Add new member</button>
+</header>
+<br>
+<div class="col-md-12">
+<table class="table table-sm table-hover table-dark">
+    <thead class="thead-light">
+      <tr>
+        <th>#</th>
+        <th>username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Package Type</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let member of outputMember">
+        <td>{{ member.id }}</td>
+        <td>{{ member.username }}</td>
+        <td>{{ member.firstName }}</td>
+        <td>{{ member.lastName }}</td>
+        <td>{{ member.Age }}</td>
+        <td><a [routerLink]="['member/package/']">{{ member.package.name }}</a></td>
+        <td>
+          <button type="button" (click)="onUpdateMember(member)"  style="margin-right: 12px;" class="btn btn-info btn-sm">Update
+          </button>
+        </td>
+        <td>
+          <button type="button" style="margin-right: 12px;" class="btn btn-danger btn-sm">Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

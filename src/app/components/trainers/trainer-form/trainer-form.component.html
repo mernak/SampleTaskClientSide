@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h4 class="modal-title"> Set Profile</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form
+ [formGroup]="form"  
+ (ngSubmit)="onSubmit(form.value)">
+ <div class="col-md-6">
+     <div class="form-group">
+         <label for="username">username</label>
+         <input type="text" name="username" id="username" disabled formControlName="username">
+     </div>
+     <div class="form-group required">
+        <label for="password">Passowrd</label>
+        <input type="password" name="password" id="password" formControlName="password">
+        <div class="text-danger" *ngIf="form.get('password').errors"> 
+            This is a required field
+        </div>
+    </div>
+     <div class="form-group ">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName" formControlName="firstName">
+    </div>
+     <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="lastName" name="lastName" id="lastName" formControlName="lastName">
+    </div>
+</div>
+ <div class="modal-footer">
+    <button type="submit" [disabled]="!form.valid">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  </div>
+</form>
+</div>

@@ -1,0 +1,40 @@
+
+<p>
+    You should use <code>class="nav-pills"</code> if you need pills and the <code>[orientation]</code> input
+    to change nav orientation
+  </p>
+  
+  <div class="d-flex">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+        <li ngbNavItem="home">
+            <a ngbNavLink>Home</a>
+            <ng-template ngbNavContent>
+              <p>Welcome Admin</p>
+            </ng-template>
+        </li> 
+      <li ngbNavItem="members">
+        <a ngbNavLink>Manage Members</a>
+        <ng-template ngbNavContent>
+          <app-members></app-members>
+        </ng-template>
+      </li>
+      <li ngbNavItem="packages">
+        <a ngbNavLink>Manage Packages</a>
+        <ng-template ngbNavContent>
+          <app-package-item-list></app-package-item-list>
+        </ng-template>
+      </li>
+      <li ngbNavItem="bottom">
+        <a ngbNavLink [routerLink]="'/packages'">Bottom</a>
+        <ng-template ngbNavContent>
+            <div class="container">
+          <router-outlet></router-outlet>
+        </div>
+        </ng-template>
+      </li>
+    </ul>
+  
+    <div [ngbNavOutlet]="nav" class="ml-4"></div>
+  </div>
+  
+  <pre>Active: {{ active }}</pre>
