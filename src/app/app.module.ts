@@ -54,7 +54,8 @@ import { TrainersComponent } from './components/trainers/trainers/trainers.compo
   entryComponents: [
     PackageItemFormComponent,
     MemberFormComponent,
-    TrainerFormComponent
+    TrainerFormComponent,
+    TrainersComponent
   ]
 })
 export class AppModule { }

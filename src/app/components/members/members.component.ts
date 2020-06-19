@@ -18,7 +18,6 @@ export class MembersComponent implements OnInit {
 
 constructor(private modalService: NgbModal) {
 
-
 }
 
 

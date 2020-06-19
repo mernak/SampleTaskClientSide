@@ -17,6 +17,6 @@ export class MemberService {
   };
 
   getMember(Id: number): Observable<Member> {
-    return this.http.get<Member>('https://localhost:44392/member/' + 1);
+    return this.http.get<Member>('https://localhost:44392/member/' + 6);
   }
 }

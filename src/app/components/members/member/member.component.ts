@@ -4,6 +4,7 @@ import { MemberService } from 'src/app/services/member.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Member } from 'src/app/Models/member';
 import { Router } from '@angular/router';
+import { TrainersComponent } from '../../trainers/trainers/trainers.component';
 
 @Component({
   selector: 'app-member',
@@ -20,6 +21,6 @@ export class MemberComponent implements OnInit {
 
   }
   viewTrainers(){
-    this.router.navigate(['/trainers']);
+    const modalRef = this.modalService.open(TrainersComponent);
   }
 }
