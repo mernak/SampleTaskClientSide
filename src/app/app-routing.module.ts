@@ -9,6 +9,7 @@ import { MemberPackageComponent } from './components/members/member-package/memb
 import { TrainerComponent } from './components/trainers/trainer/trainer.component';
 import { MemberComponent } from './components/members/member/member.component';
 import { TrainersComponent } from './components/trainers/trainers/trainers.component';
+import { AuthGuard } from './Guards/auth.guard';
 
 
 const routes: Routes = [
@@ -19,15 +20,15 @@ const routes: Routes = [
       {path: 'login', component: LoginComponent}
     ]
   },
-   { path: 'admin', component: AdminComponent},
-   { path: 'trainer', component: TrainerComponent},
-   { path: 'packages', component: PackageItemListComponent},
+   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+   { path: 'trainer', component: TrainerComponent, canActivate: [AuthGuard]},
+   { path: 'packages', component: PackageItemListComponent, canActivate: [AuthGuard]},
    {path: 'members', component: MembersComponent,
   children: [
-    {path: 'member/package/', component: MemberPackageComponent}
+    {path: 'member/package/', component: MemberPackageComponent, canActivate: [AuthGuard]}
   ]},
-  { path: 'member', component: MemberComponent,
-children:[
+  { path: 'member', component: MemberComponent, canActivate: [AuthGuard],
+children: [
   {path: 'trainers', component: TrainersComponent}
 ]},
 ];

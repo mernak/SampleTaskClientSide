@@ -37,5 +37,6 @@ get isMember() {
 
   logout() {
     this.authenticationService.logout();
+    this.router.navigate(['user/login']);
 }
 }
